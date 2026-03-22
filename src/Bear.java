@@ -33,13 +33,13 @@ public class Bear extends Animal {
     public String getSeasonalEffect(){
         switch(getCurrentSeason()){
             case WINTER:
-                return "The bear is hibernating. The bear sheds 20% of its weight";
+                return "hibernating. sheds 20% of its weight";
             case SPRING:
-                return "The bear sheds 25% of its weight";
+                return "sheds 25% of its weight";
             case SUMMER:
-                return "The bear gains a third of its weight";
+                return "gains a third of its weight";
             case FALL:
-                return "The bear gains 25% of its weight";
+                return "gains 25% of its weight";
             default:
                 return "";
         }

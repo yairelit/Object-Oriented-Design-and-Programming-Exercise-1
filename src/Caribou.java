@@ -24,11 +24,11 @@ public class Caribou extends Animal {
     public String getSeasonalEffect() {
         switch (getCurrentSeason()) {
             case WINTER:
-                return "The Caribou changes its color to white and migrates south.";
+                return "changes its color to white and migrates south.";
             case SPRING:
-                return "The Caribou changes its color to brown";
+                return "changes its color to brown";
             case SUMMER:
-                return "The Caribou migrates north";
+                return "migrates north";
             case FALL:
                 return "No change";
             default:

@@ -1,4 +1,4 @@
-public abstract class Animal implements Seasonable,Comparable{
+public abstract class Animal implements Seasonable,Comparable<Animal>{
     protected int weight;
     private Season season;
     protected Color color;
@@ -16,14 +16,9 @@ public abstract class Animal implements Seasonable,Comparable{
     }
 
     @Override
-    public int compareTo(Object o) {
-        if (!(o instanceof Animal)) {
-            throw new IllegalArgumentException("Object is not an Animal");
-        }
-
-        Animal other = (Animal) o;
-
+    public int compareTo(Animal other) {
         // Returns 0 if equal, positive if this > other, negative if this < other
+        if (other == null) return 1;
         return Integer.compare(this.weight, other.weight);
     }
 
@@ -35,16 +30,15 @@ public abstract class Animal implements Seasonable,Comparable{
 
     @Override
     public String toString() {
-        // We create the base string
-        String result = String.format("weight=%d, season=%s, color=%s", weight, season, color);
-
-        // We append the seasonal effect if it's not empty
         String effect = getSeasonalEffect();
+
+        String details = String.format("weight=%d, season=%s, color=%s", weight, getCurrentSeason(), color);
+
         if (effect != null && !effect.isEmpty()) {
-            result += ". " + effect;
+            return effect + ". " + details;
         }
 
-        return result;
+        return details;
     }
 
     protected abstract String getSeasonalEffect();
