@@ -8,40 +8,30 @@ public class OliveTree extends Tree {
 
     @Override
     public String toString() {
-        return "Olive Tree: " + super.toString();
+        return super.toString();
     }
+
     @Override
     public void changeSeason() {
         super.changeSeason();
-
-        if(getCurrentSeason() != Season.FALL)
-            subFruit();
-
-            switch (getCurrentSeason()){
-                case WINTER:
-                    height += 0.05;
-                    break;
-                case SPRING, SUMMER:
-                    height += 0.1;
-                    break;
-                case FALL:
-                    height += 0.05;
-                    addFruit();
-                    break;
-            }
+        switch (getCurrentSeason()) {
+            case WINTER:
+                this.height += 5;
+                break;
+            case FALL:
+                this.height += 5;
+                break;
+            case SUMMER:
+                this.height += 10;
+                break;
+            case SPRING:
+                this.height += 10;
+                break;
+        }
     }
 
     @Override
     public String getSeasonalEffect() {
-        switch (getCurrentSeason()){
-            case WINTER:
-                return "The The height of the tree increases by 5 cm";
-            case SPRING, SUMMER:
-                return "The The height of the tree increases by 10 cm";
-            case FALL:
-                return "The The height of the tree increases by 5 cm, and it bears fruit";
-            default:
-                return "";
-        }
+        return (getCurrentSeason() == Season.FALL) ? "I give fruit." : "";
     }
 }

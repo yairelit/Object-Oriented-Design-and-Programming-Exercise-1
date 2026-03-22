@@ -42,13 +42,12 @@ public abstract class Tree implements Comparable<Tree>, Seasonable {
     @Override
     public String toString() {
         String effect = getSeasonalEffect();
+        String effectStr = (effect != null && !effect.isEmpty()) ? effect + " " : "";
 
-        String details = String.format("height=%d, season=%s, leaves color=%s", height, getCurrentSeason(), leavesColor);
+        String leafInfo = ( leavesColor == null) ?
+                "I have no leaves" : "my color is: " + leavesColor;
 
-        if (effect != null && !effect.isEmpty()) {
-            return effect + ". " + details;
-        }
-
-        return details;
+        return String.format("%sMy height is: %d and %s",
+                effectStr, height, leafInfo);
     }
 }

@@ -4,54 +4,40 @@ public class FigTree extends Tree {
 
     FigTree(int height, Season season) {
         super(height, season, Color.GREEN, (season == Season.SUMMER));
+        if (season == Season.FALL) {
+            this.leavesColor = Color.YELLOW;
+        }
     }
 
     @Override
     public String toString() {
-        return "Fig Tree: " + super.toString();
+        return  super.toString();
     }
     @Override
     public void changeSeason() {
         super.changeSeason();
-
-        if(getCurrentSeason() != Season.SUMMER)
-            subFruit();
-
-        switch (getCurrentSeason()){
+        switch (getCurrentSeason()) {
             case WINTER:
-                height += 0.2; // + 20 cm
-                leavesColor = Color.NONE;
+                this.height += 20;
+                this.leavesColor = null;
                 break;
             case SPRING:
-                height += 0.3; // + 30 cm
-                leavesColor = Color.GREEN;
+                this.height += 30;
+                this.leavesColor = Color.GREEN;
                 break;
             case SUMMER:
-                height += 0.3;
-                addFruit();
+                this.height += 30;
+                this.leavesColor = Color.GREEN;
                 break;
             case FALL:
-                height += 0.2;
-                leavesColor = Color.YELLOW;
+                this.height += 20;
+                this.leavesColor = Color.YELLOW; // חשוב: צהוב בסתיו
                 break;
         }
-
     }
 
     @Override
     public String getSeasonalEffect() {
-        switch (getCurrentSeason()){
-            case WINTER:
-                return "The height of the tree increases by 20 cm, and it loses its leaves";
-            case SPRING:
-                return "The height of the tree increases by 30 cm, and it grows green leaves";
-            case SUMMER:
-                return "The The height of the tree increases by 30 cm, and it bears fruit";
-            case FALL:
-                return "The height of the tree increases by 20 cm, and its leaves turn yellow";
-            default:
-                return "";
-
-        }
+        return (getCurrentSeason() == Season.SUMMER) ? "I give fruit." : "";
     }
 }

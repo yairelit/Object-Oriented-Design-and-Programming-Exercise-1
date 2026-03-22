@@ -6,7 +6,7 @@ public class Caribou extends Animal {
 
     @Override
     public String toString() {
-        return "Caribou: " + super.toString();
+        return  super.toString();
     }
 
     @Override
@@ -23,16 +23,9 @@ public class Caribou extends Animal {
     @Override
     public String getSeasonalEffect() {
         switch (getCurrentSeason()) {
-            case WINTER:
-                return "changes its color to white and migrates south.";
-            case SPRING:
-                return "changes its color to brown";
-            case SUMMER:
-                return "migrates north";
-            case FALL:
-                return "No change";
-            default:
-                return "";
+            case WINTER: return "I am migrating south.";
+            case SUMMER: return "I am migrating north.";
+            default: return "";
         }
     }
 }

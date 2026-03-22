@@ -1,3 +1,5 @@
+import java.lang.Math;
+
 public class Bear extends Animal {
 
     Bear(int weight, Season season) {
@@ -7,7 +9,7 @@ public class Bear extends Animal {
     @Override
     public String toString() {
         // Optional: Prepending the class name to the parent's string
-        return "Bear: " + super.toString();
+        return super.toString();
     }
 
     @Override
@@ -16,33 +18,22 @@ public class Bear extends Animal {
 
         switch (getCurrentSeason()) {
             case WINTER:
-                this.weight -= (int)weight*0.2;
+                this.weight = (int) Math.round(this.weight * 0.8);
                 break;
             case SPRING:
-                this.weight -= (int)weight*0.25;
+                this.weight = (int) Math.round(this.weight * 0.75);
                 break;
             case SUMMER:
-                this.weight += (int)weight*0.33;
+                this.weight = (int) Math.round(this.weight * 1.3333333333);
                 break;
             case FALL:
-                this.weight += (int)weight*0.25;
+                this.weight = (int) Math.round(this.weight * 1.25);
                 break;
         }
     }
     @Override
-    public String getSeasonalEffect(){
-        switch(getCurrentSeason()){
-            case WINTER:
-                return "hibernating. sheds 20% of its weight";
-            case SPRING:
-                return "sheds 25% of its weight";
-            case SUMMER:
-                return "gains a third of its weight";
-            case FALL:
-                return "gains 25% of its weight";
-            default:
-                return "";
-        }
+    public String getSeasonalEffect() {
+        return (getCurrentSeason() == Season.WINTER) ? "I am sleeping." : "";
     }
 
 }

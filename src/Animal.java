@@ -31,14 +31,9 @@ public abstract class Animal implements Seasonable,Comparable<Animal>{
     @Override
     public String toString() {
         String effect = getSeasonalEffect();
-
-        String details = String.format("weight=%d, season=%s, color=%s", weight, getCurrentSeason(), color);
-
-        if (effect != null && !effect.isEmpty()) {
-            return effect + ". " + details;
-        }
-
-        return details;
+        String effectStr = (effect != null && !effect.isEmpty()) ? effect + " " : "";
+        return String.format("%sMy weight is: %d and my color is: %s",
+                effectStr, weight, color);
     }
 
     protected abstract String getSeasonalEffect();
